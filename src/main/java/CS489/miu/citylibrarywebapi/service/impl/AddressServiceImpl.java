@@ -1,8 +1,12 @@
 package CS489.miu.citylibrarywebapi.service.impl;
 
+import CS489.miu.citylibrarywebapi.dto.AddressPatientResponse;
+import CS489.miu.citylibrarywebapi.dto.AddressResponse;
 import CS489.miu.citylibrarywebapi.model.Address;
 import CS489.miu.citylibrarywebapi.repository.AddressRepository;
+import CS489.miu.citylibrarywebapi.repository.PatientRepository;
 import CS489.miu.citylibrarywebapi.service.AddressService;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,9 +14,12 @@ import java.util.List;
 @Service
 public class AddressServiceImpl implements AddressService {
     private AddressRepository repo;
+    private ModelMapper modelMapper;
+    private PatientRepository patientRepository;
 
-    public AddressServiceImpl(AddressRepository repo) {
+    public AddressServiceImpl(AddressRepository repo, ModelMapper modelMapper) {
         this.repo = repo;
+        this.modelMapper = modelMapper;
     }
 
     @Override
@@ -27,7 +34,18 @@ public class AddressServiceImpl implements AddressService {
 
 
     @Override
-    public List<Address> findAll() {
-        return repo.findAll();
+    public List<AddressPatientResponse> findAll() {
+        return converToDTOList(repo.findAll());
+    }
+    @Override
+    public List<AddressPatientResponse> findAllWithPatient() {
+        //var address = repo.findAllAddressesWithPatientsSortedByCity();
+
+        return converToDTOList(repo.findAllAddressesWithPatientsSortedByCity());
+    }
+
+    private List<AddressPatientResponse> converToDTOList(List<Address> addresses){
+        return addresses.stream().map(address ->
+                modelMapper.map(address, AddressPatientResponse.class)).toList();
     }
 }

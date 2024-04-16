@@ -1,6 +1,7 @@
 package CS489.miu.citylibrarywebapi.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,14 +26,14 @@ public class Patient {
     private String email;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dob;
-    @OneToOne(cascade = CascadeType.ALL)
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "addressId")
+    @JsonManagedReference
     private Address address;
+
     @OneToMany(mappedBy = "patient")
     @JsonBackReference
     private List<Appointment> appointments;
 
-
-    public String getFullName(){
-        return firstName + " " + lastName;
-    }
 }

@@ -4,6 +4,7 @@ import CS489.miu.citylibrarywebapi.dto.PatientRequest;
 import CS489.miu.citylibrarywebapi.dto.PatientResponse;
 import CS489.miu.citylibrarywebapi.execption.NotElementFoundException;
 import CS489.miu.citylibrarywebapi.model.Patient;
+import CS489.miu.citylibrarywebapi.repository.AddressRepository;
 import CS489.miu.citylibrarywebapi.repository.PatientRepository;
 import CS489.miu.citylibrarywebapi.service.PatientService;
 import org.modelmapper.ModelMapper;
@@ -18,10 +19,12 @@ public class PatientServiceImpl implements PatientService {
 
     private ModelMapper modelMapper;
     private PatientRepository repo;
+    private AddressRepository addressRepo;
 
-    public PatientServiceImpl(ModelMapper modelMapper, PatientRepository repo) {
+    public PatientServiceImpl(ModelMapper modelMapper, PatientRepository repo, AddressRepository addressRepo) {
         this.modelMapper = modelMapper;
         this.repo = repo;
+        this.addressRepo = addressRepo;
     }
 
 
@@ -53,8 +56,12 @@ public class PatientServiceImpl implements PatientService {
     public PatientResponse register(PatientRequest request) {
         var entity = convertToEntity(request);
         entity.setAppointments(new ArrayList<>());
+        var address = entity.getAddress();
+       address.setPatient(null);
+        //address = addressRepo.save(entity.getAddress());
+       entity.setAddress(address);
         entity = repo.save(entity);
-        return convertToDto(entity);
+        return convertToDto(repo.save(entity));
     }
 
     @Override
@@ -84,7 +91,7 @@ public class PatientServiceImpl implements PatientService {
     private  PatientResponse convertToDto(Patient patient) {
         return modelMapper.map(patient, PatientResponse.class);
     }
-    private  Patient convertToEntity(PatientRequest patientResquest) {
-        return modelMapper.map(patientResquest, Patient.class);
+    private  Patient convertToEntity(PatientRequest patientRequest) {
+        return modelMapper.map(patientRequest, Patient.class);
     }
 }
