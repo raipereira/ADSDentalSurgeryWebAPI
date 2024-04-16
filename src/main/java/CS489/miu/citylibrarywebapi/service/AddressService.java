@@ -1,8 +1,7 @@
 package CS489.miu.citylibrarywebapi.service;
 
 
-import CS489.miu.citylibrarywebapi.dto.AddressPatientResponse;
-import CS489.miu.citylibrarywebapi.dto.AddressResponse;
+import CS489.miu.citylibrarywebapi.dto.response.AddressPatientResponse;
 import CS489.miu.citylibrarywebapi.model.Address;
 
 import java.util.List;

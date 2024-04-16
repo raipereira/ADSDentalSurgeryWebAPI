@@ -1,5 +1,6 @@
-package CS489.miu.citylibrarywebapi.dto;
+package CS489.miu.citylibrarywebapi.dto.response;
 
+import CS489.miu.citylibrarywebapi.dto.request.AddressResponse;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -7,7 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.time.LocalDate;
 
 @Data
-public class PatientAddressResponse {
+public class PatientResponse{
        private Integer id;
        private String firstName;
        private String lastName;
@@ -16,8 +17,10 @@ public class PatientAddressResponse {
        private String email;
        @DateTimeFormat(pattern = "yyyy-MM-dd")
        private LocalDate dob;
+
+       private AddressResponse address;
        @JsonBackReference
-       private AddressPatientResponse address;
+       private AddressPatientResponse primaryAddress;
 
 
 }

@@ -1,4 +1,4 @@
-package CS489.miu.citylibrarywebapi.configuration;
+package CS489.miu.citylibrarywebapi.config;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

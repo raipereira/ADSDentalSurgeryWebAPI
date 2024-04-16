@@ -1,4 +1,4 @@
-package CS489.miu.citylibrarywebapi.dto;
+package CS489.miu.citylibrarywebapi.dto.request;
 
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;

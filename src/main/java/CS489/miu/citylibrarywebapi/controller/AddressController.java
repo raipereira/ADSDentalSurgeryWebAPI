@@ -1,6 +1,6 @@
 package CS489.miu.citylibrarywebapi.controller;
 
-import CS489.miu.citylibrarywebapi.dto.AddressPatientResponse;
+import CS489.miu.citylibrarywebapi.dto.response.AddressPatientResponse;
 import CS489.miu.citylibrarywebapi.service.AddressService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

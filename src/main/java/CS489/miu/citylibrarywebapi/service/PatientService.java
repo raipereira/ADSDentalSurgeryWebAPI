@@ -1,8 +1,8 @@
 package CS489.miu.citylibrarywebapi.service;
 
 
-import CS489.miu.citylibrarywebapi.dto.PatientRequest;
-import CS489.miu.citylibrarywebapi.dto.PatientResponse;
+import CS489.miu.citylibrarywebapi.dto.request.PatientRequest;
+import CS489.miu.citylibrarywebapi.dto.response.PatientResponse;
 import CS489.miu.citylibrarywebapi.model.Patient;
 
 import java.util.List;

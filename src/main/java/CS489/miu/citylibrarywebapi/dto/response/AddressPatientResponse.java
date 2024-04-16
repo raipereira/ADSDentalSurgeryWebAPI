@@ -1,4 +1,4 @@
-package CS489.miu.citylibrarywebapi.dto;
+package CS489.miu.citylibrarywebapi.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package CS489.miu.citylibrarywebapi.dto;
+package CS489.miu.citylibrarywebapi.dto.request;
 
 import CS489.miu.citylibrarywebapi.model.Patient;
 import com.fasterxml.jackson.annotation.JsonBackReference;

@@ -1,7 +1,6 @@
 package CS489.miu.citylibrarywebapi.service.impl;
 
-import CS489.miu.citylibrarywebapi.dto.AddressPatientResponse;
-import CS489.miu.citylibrarywebapi.dto.AddressResponse;
+import CS489.miu.citylibrarywebapi.dto.response.AddressPatientResponse;
 import CS489.miu.citylibrarywebapi.model.Address;
 import CS489.miu.citylibrarywebapi.repository.AddressRepository;
 import CS489.miu.citylibrarywebapi.repository.PatientRepository;

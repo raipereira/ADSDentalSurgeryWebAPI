@@ -1,7 +1,7 @@
 package CS489.miu.citylibrarywebapi.controller;
 
-import CS489.miu.citylibrarywebapi.dto.PatientRequest;
-import CS489.miu.citylibrarywebapi.dto.PatientResponse;
+import CS489.miu.citylibrarywebapi.dto.request.PatientRequest;
+import CS489.miu.citylibrarywebapi.dto.response.PatientResponse;
 import CS489.miu.citylibrarywebapi.service.PatientService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

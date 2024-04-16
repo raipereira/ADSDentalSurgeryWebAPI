@@ -1,7 +1,7 @@
 package CS489.miu.citylibrarywebapi.service.impl;
 
-import CS489.miu.citylibrarywebapi.dto.PatientRequest;
-import CS489.miu.citylibrarywebapi.dto.PatientResponse;
+import CS489.miu.citylibrarywebapi.dto.request.PatientRequest;
+import CS489.miu.citylibrarywebapi.dto.response.PatientResponse;
 import CS489.miu.citylibrarywebapi.execption.NotElementFoundException;
 import CS489.miu.citylibrarywebapi.model.Patient;
 import CS489.miu.citylibrarywebapi.repository.AddressRepository;
@@ -57,9 +57,8 @@ public class PatientServiceImpl implements PatientService {
         var entity = convertToEntity(request);
         entity.setAppointments(new ArrayList<>());
         var address = entity.getAddress();
-       address.setPatient(null);
-        //address = addressRepo.save(entity.getAddress());
-       entity.setAddress(address);
+        address.setPatient(null);
+        entity.setAddress(address);
         entity = repo.save(entity);
         return convertToDto(repo.save(entity));
     }
@@ -68,6 +67,7 @@ public class PatientServiceImpl implements PatientService {
     public PatientResponse update(PatientRequest patientRequest, Integer patientId) {
         var entity = repo.findById(patientId).orElseThrow(() -> new NotElementFoundException("Patient Not found"));
         modelMapper.map(patientRequest, entity);
+        repo.save(entity);
         return convertToDto(entity);
     }
 
